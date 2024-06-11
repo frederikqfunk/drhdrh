@@ -1,5 +1,5 @@
 # Brug et basisbillede med Apache
-FROM httpd:latest
+FROM php:latest
 
 # Kopier dit webindhold til Apache dokumentroden
 COPY ./web-app/ /usr/local/apache2/htdocs/
