@@ -18,7 +18,8 @@ services:
     networks:
       - localnetwork
   web:
-    image: "httpd:2.4.55"
+    build: .
+    #image: "httpd:2.4.55"
     environment:
       - DB_SERVER=db
       - DB_USER=root
