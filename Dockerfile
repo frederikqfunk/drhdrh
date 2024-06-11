@@ -1,4 +1,4 @@
-FROM php:8.3-rc-cli-bookworm
+FROM php:8.0
 
 #RUN mkdir /var/www/html/flybook
 COPY ./web-app/ /var/www/html/
