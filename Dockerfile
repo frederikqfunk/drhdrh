@@ -1,18 +1,12 @@
-FROM php:7.3-apache
+# Brug et basisbillede med Apache
+FROM httpd:latest
 
-#RUN mkdir /var/www/html/flybook
-COPY ./web-app/ /var/www/html/ 
-COPY ./api/ /var/www/html/api/
-#COPY ./cgi-bin/status_check.cgi /usr/lib/cgi-bin/status_check.cgi
-COPY ./cgi-bin/ /usr/lib/cgi-bin/
-RUN chmod +x /usr/lib/cgi-bin/status_check
+# Kopier dit webindhold til Apache dokumentroden
+COPY ./web-app/ /usr/local/apache2/htdocs/
+COPY ./api/ /usr/local/apache2/htdocs/api/
+COPY ./cgi-bin/ /usr/local/apache2/cgi-bin/
+RUN chmod +x /usr/local/apache2/cgi-bin/status_check
 
-RUN docker-php-ext-install pdo_mysql
-RUN a2enmod rewrite
-RUN a2enmod cgi
-RUN service apache2 restart
-RUN chown -R www-data:www-data /var/www
-#RUN ln -s /etc/apache2/mods-available/cgi.load /etc/apache2/mods-enabled/
-
+# Eksponér port 80
 EXPOSE 80
 
