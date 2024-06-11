@@ -1,4 +1,4 @@
-FROM php:8.0-apache
+FROM php:8-apache
 
 #RUN mkdir /var/www/html/flybook
 COPY ./web-app/ /var/www/html/
