@@ -14,5 +14,8 @@ RUN service apache2 restart
 RUN chown -R www-data:www-data /var/www
 #RUN ln -s /etc/apache2/mods-available/cgi.load /etc/apache2/mods-enabled/
 
+RUN echo "ServerTokens Prod" >> /etc/apache2/apache2.conf && \
+    echo "ServerSignature Off" >> /etc/apache2/apache2.conf
+
 EXPOSE 80
 
